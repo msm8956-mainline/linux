@@ -1,0 +1,20 @@
+menu "MSM8956 panel drivers generated with linux-mdss-dsi-panel-driver-generator"
+	depends on GPIOLIB && OF && REGULATOR
+	depends on DRM_MIPI_DSI
+
+config DRM_PANEL_MSM8956_GENERATED
+	tristate "Select all generated MSM8956 panel drivers by default"
+
+config DRM_PANEL_XIAOMI_KENZO_NT35532_BOE
+	tristate "Xiaomi KENZO NT35532 BOE"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_XIAOMI_KENZO_NT35596_TIANMA
+	tristate "Xiaomi KENZO NT35596 TIANMA"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_XIAOMI_KENZO_R63315_SHARP
+	tristate "Xiaomi KENZO R63315 SHARP"
+	default DRM_PANEL_MSM8956_GENERATED
+
+endmenu
