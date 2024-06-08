@@ -1,0 +1,40 @@
+menu "MSM8956 panel drivers generated with linux-mdss-dsi-panel-driver-generator"
+	depends on GPIOLIB && OF && REGULATOR
+	depends on DRM_MIPI_DSI
+
+config DRM_PANEL_MSM8956_GENERATED
+	tristate "Select all generated MSM8956 panel drivers by default"
+
+config DRM_PANEL_LONGCHEER_L9360_HX8399B
+	tristate "Longcheer L9360 HX8399B"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_LONGCHEER_L9360_HX8399C
+	tristate "Longcheer L9360 HX8399C"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_LONGCHEER_L9360_NT35695
+	tristate "Longcheer L9360 NT35695"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_LONGCHEER_L9360_OTM1906A
+	tristate "Longcheer L9360 OTM1906A"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_LONGCHEER_L9360_R63350
+	tristate "Longcheer L9360 R63350"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_XIAOMI_KENZO_NT35532_BOE
+	tristate "Xiaomi KENZO NT35532 BOE"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_XIAOMI_KENZO_NT35596_TIANMA
+	tristate "Xiaomi KENZO NT35596 TIANMA"
+	default DRM_PANEL_MSM8956_GENERATED
+
+config DRM_PANEL_XIAOMI_KENZO_R63315_SHARP
+	tristate "Xiaomi KENZO R63315 SHARP"
+	default DRM_PANEL_MSM8956_GENERATED
+
+endmenu
