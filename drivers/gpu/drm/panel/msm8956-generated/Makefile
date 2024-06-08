@@ -1,0 +1,8 @@
+obj-$(CONFIG_DRM_PANEL_LONGCHEER_L9360_HX8399B) += panel-longcheer-l9360-hx8399b.o
+obj-$(CONFIG_DRM_PANEL_LONGCHEER_L9360_HX8399C) += panel-longcheer-l9360-hx8399c.o
+obj-$(CONFIG_DRM_PANEL_LONGCHEER_L9360_NT35695) += panel-longcheer-l9360-nt35695.o
+obj-$(CONFIG_DRM_PANEL_LONGCHEER_L9360_OTM1906A) += panel-longcheer-l9360-otm1906a.o
+obj-$(CONFIG_DRM_PANEL_LONGCHEER_L9360_R63350) += panel-longcheer-l9360-r63350.o
+obj-$(CONFIG_DRM_PANEL_XIAOMI_KENZO_NT35532_BOE) += panel-xiaomi-kenzo-nt35532-boe.o
+obj-$(CONFIG_DRM_PANEL_XIAOMI_KENZO_NT35596_TIANMA) += panel-xiaomi-kenzo-nt35596-tianma.o
+obj-$(CONFIG_DRM_PANEL_XIAOMI_KENZO_R63315_SHARP) += panel-xiaomi-kenzo-r63315-sharp.o
