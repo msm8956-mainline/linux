@@ -97,6 +97,20 @@
 		};
 	};
 
+	usbphy_1p2: regulator-usbphy-1p2 {
+		compatible = "regulator-fixed";
+		regulator-name = "usbphy-1p2";
+		regulator-always-on;
+		regulator-boot-on;
+		regulator-min-microvolt = <1200000>;
+		regulator-max-microvolt = <1200000>;
+		vin-supply = <&vph_pwr>;
+	};
+
+	usb_vbus: extcon-usb-dummy {
+		compatible = "linux,extcon-usb-dummy";
+	};
+
 	vph_pwr: regulator-vph-pwr {
 		compatible = "regulator-fixed";
 		regulator-name = "vph-pwr";
@@ -205,6 +219,11 @@
 
 &gcc {
 	vdd_gfx-supply = <&pm8004_s5>;
+};
+
+&otg {
+	extcon = <&usb_vbus>, <0>;
+	status = "okay";
 };
 
 &pm8004_spmi_regulators {
@@ -489,6 +508,13 @@
 		drive-strength = <2>;
 		bias-pull-up;
 	};
+};
+
+&usb_hs_phy_8916 {
+	v1p8-supply = <&pm8950_l7>;
+	v3p3-supply = <&pm8950_l13>;
+	extcon = <&usb_vbus>;
+	status = "okay";
 };
 
 &xo_board {
