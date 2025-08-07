@@ -10,6 +10,7 @@
 #include "msm8976.dtsi"
 #include "pm8004.dtsi"
 #include "pm8950.dtsi"
+#include "pmi8950.dtsi"
 
 / {
 	model = "BQ Aquaris X5 Plus (Longcheer L9360)";
@@ -43,6 +44,8 @@
 				 <&gcc GCC_MDSS_BYTE0_CLK>,
 				 <&gcc GCC_MDSS_PCLK0_CLK>,
 				 <&gcc GCC_MDSS_ESC0_CLK>;
+
+			status = "disabled";
 		};
 	};
 
@@ -117,6 +120,10 @@
 		regulator-always-on;
 		regulator-boot-on;
 	};
+};
+
+&adreno_gpu {
+	status = "okay";
 };
 
 &blsp1_i2c2 {
@@ -219,6 +226,48 @@
 
 &gcc {
 	vdd_gfx-supply = <&pm8004_s5>;
+};
+
+&mdss {
+	status = "okay";
+};
+
+&mdss_dsi0 {
+	vdd-supply = <&pm8950_l17>;
+	vdda-supply = <&pm8950_l1>;
+	vddio-supply = <&pm8950_l6>;
+
+	pinctrl-0 = <&mdss_default>;
+	pinctrl-1 = <&mdss_sleep>;
+	pinctrl-names = "default", "sleep";
+
+	status = "okay";
+
+	panel@0 {
+		compatible = "longcheer,l9360-panel";
+		reg = <0>;
+
+		reset-gpios = <&tlmm 25 GPIO_ACTIVE_LOW>;
+
+		vsp-supply = <&lab>;
+		vsn-supply = <&ibb>;
+
+		port {
+			panel_in: endpoint {
+				remote-endpoint = <&mdss_dsi0_out>;
+			};
+		};
+	};
+};
+
+&mdss_dsi0_out {
+	data-lanes = <0 1 2 3>;
+	remote-endpoint = <&panel_in>;
+};
+
+&mdss_dsi0_phy {
+	vddio-supply = <&pm8950_l6>;
+	status = "okay";
 };
 
 &otg {
@@ -423,6 +472,20 @@
 
 &tlmm {
 	gpio-reserved-ranges = <0 4>;
+
+	mdss_default: mdss-default-state {
+		pins = "gpio25";
+		function = "gpio";
+		drive-strength = <8>;
+		bias-disable;
+	};
+
+	mdss_sleep: mdss-sleep-state {
+		pins = "gpio25";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-pull-down;
+	};
 
 	button_backlight_default: button-backlight-default-state {
 		pins = "gpio101";
