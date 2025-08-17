@@ -1605,7 +1605,7 @@ static int wled_configure_short_irq(struct wled *wled,
 	if (rc < 0)
 		return rc;
 
-	wled->short_irq = platform_get_irq_byname(pdev, "short");
+	wled->short_irq = platform_get_irq_byname_optional(pdev, "short");
 	if (wled->short_irq < 0) {
 		dev_dbg(&pdev->dev, "short irq is not used\n");
 		return 0;
@@ -1628,7 +1628,7 @@ static int wled_configure_ovp_irq(struct wled *wled,
 	int rc;
 	u32 val;
 
-	wled->ovp_irq = platform_get_irq_byname(pdev, "ovp");
+	wled->ovp_irq = platform_get_irq_byname_optional(pdev, "ovp");
 	if (wled->ovp_irq < 0) {
 		dev_dbg(&pdev->dev, "OVP IRQ not found - disabling automatic string detection\n");
 		return 0;
