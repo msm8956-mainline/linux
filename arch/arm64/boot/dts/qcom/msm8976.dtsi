@@ -971,6 +971,8 @@
 				      "vsync",
 				      "core";
 
+			resets = <&gcc RST_MDSS_BCR>;
+
 			#address-cells = <1>;
 			#size-cells = <1>;
 			ranges;
